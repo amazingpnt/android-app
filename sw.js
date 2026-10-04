@@ -9,6 +9,7 @@ const APP_FILES = [
   './image/icon512.png'
 ].map((path) => new URL(path, self.registration.scope).href);
 
+
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME)
