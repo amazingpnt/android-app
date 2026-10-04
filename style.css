@@ -1,0 +1,42 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  display: grid;
+  place-items: center;
+  font-family: Arial, sans-serif;
+  background: #f5f7fb;
+  color: #172033;
+}
+
+main {
+  text-align: center;
+}
+
+button {
+  padding: 14px 28px;
+  border: 0;
+  border-radius: 8px;
+  background: #356df3;
+  color: white;
+  font: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #2459d4;
+}
+
+button:focus-visible {
+  outline: 3px solid #9bb7ff;
+  outline-offset: 3px;
+}
+
+#message {
+  min-height: 1.5em;
+  margin: 16px 0 0;
+}
