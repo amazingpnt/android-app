@@ -20,7 +20,3 @@ buildozer android debug
 ```
 
 The generated APK is placed in `bin/`.
-
-The GitHub Actions workflow builds a debug APK on pushes, pull requests, and
-manual runs. Download the `minimal-kivy-app-debug-apk` artifact from the
-workflow run to get the APK.
