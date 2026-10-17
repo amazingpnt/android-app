@@ -42,18 +42,25 @@ jobs:
             pkg-config \
             zlib1g-dev \
             unzip \
-            zip
+            zip \
+            wget \
+            curl
 
       - name: Install Buildozer
         run: python -m pip install --upgrade buildozer "Cython==0.29.33"
 
-      - name: Cache Android build files
-        uses: actions/cache@v4
-        with:
-          path: .buildozer
-          key: ${{ runner.os }}-android-${{ hashFiles('buildozer.spec') }}
-          restore-keys: |
-            ${{ runner.os }}-android-
+      - name: Clean stale Buildozer cache
+        run: rm -rf ~/.buildozer .buildozer
+
+      - name: Install Android SDK/NDK/build-tools
+        run: |
+          export ANDROID_SDK_ROOT=$HOME/.buildozer/android/platform/android-sdk
+          export ANDROID_HOME=$ANDROID_SDK_ROOT
+          mkdir -p $ANDROID_SDK_ROOT
+
+          yes | sdkmanager --licenses
+          sdkmanager "platform-tools" "platforms;android-33" "build-tools;33.0.2" "ndk;25.2.9519653"
+          sdkmanager --update
 
       - name: Build debug APK
         run: buildozer android debug
