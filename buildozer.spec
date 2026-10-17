@@ -8,7 +8,9 @@ source.include_exts = py,kv,png,jpg,atlas
 version = 0.1
 requirements = python3,kivy
 orientation = portrait
+android.api = 33
 android.accept_sdk_license = True
+android.sdk_path = ~/.buildozer/android/platform/android-sdk
 
 [buildozer]
 log_level = 2
