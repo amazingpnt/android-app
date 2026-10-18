@@ -9,9 +9,7 @@ version = 0.1
 requirements = python3,kivy
 orientation = portrait
 android.api = 33
-android.ndk = 25b
 android.accept_sdk_license = True
-p4a.branch = v2024.01.21
 
 
 [buildozer]
