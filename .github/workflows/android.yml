@@ -85,7 +85,7 @@ jobs:
         env:
           ANDROID_SDK_ROOT: ${{ env.ANDROID_SDK_ROOT }}
           ANDROID_HOME: ${{ env.ANDROID_SDK_ROOT }}
-          PIP_NO_BINARY: "charset_normalizer"
+ 
         run: |
           buildozer android debug
 
