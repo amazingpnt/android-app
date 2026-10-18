@@ -19,6 +19,9 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+      - name: Clean broken Python-for-Android build environment
+        run: |
+         rm -rf .buildozer/android/platform/build-arm64-v8a_armeabi-v7a/build/venv
 
       # --- 1. CACHE PIP DEPENDENCIES ---
       - name: Cache pip
