@@ -44,8 +44,12 @@ jobs:
             unzip \
             zip
 
-      - name: Install Buildozer
-        run: python -m pip install --upgrade buildozer "Cython==0.29.33"
+      - name: Ensure pip and build tools compatibility
+        run: |
+          # Pin pip in the runner to a pip version compatible with p4a/buildozer internals,
+          # then upgrade python-for-android and buildozer so they do not rely on removed pip internals.
+          python -m pip install --upgrade pip==23.1.2 setuptools wheel
+          python -m pip install --upgrade python-for-android buildozer "Cython==0.29.33"
 
       - name: Set up Android SDK
         uses: android-actions/setup-android@v4
@@ -57,11 +61,6 @@ jobs:
           echo "ANDROID_HOME=$ANDROID_SDK_ROOT" >> "$GITHUB_ENV"
           yes | sdkmanager --licenses || true
           sdkmanager --install "platform-tools" "platforms;android-33" "build-tools;33.0.0"
-          
-      - name: Pin pip to a compatible version
-        run: |
-          python -m pip install --upgrade "pip<24" setuptools wheel
-        shell: bash
 
       - name: Build debug APK
         env:
